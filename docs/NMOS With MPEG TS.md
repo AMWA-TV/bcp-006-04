@@ -30,7 +30,7 @@ The NMOS terms 'Controller', 'Node', 'Source', 'Flow', 'Sender', 'Receiver' are 
 
 Nodes capable of transmitting MPEG TS streams, including those carrying JPEG 2000 or JPEG XS content as per VSF TR-01 and TR-07, **MUST** have Source, Flow, and Sender resources in the IS-04 Node API.
 
-Nodes **MUST** support IS-04 v1.3.x to implement all aspects of this specification.
+Nodes **MUST** support IS-04 v1.3 to implement all aspects of this specification.
 
 Partial implementation can be achieved using IS-04 v1.2 and earlier.
 
@@ -51,8 +51,11 @@ For Nodes implementing IS-04 v1.3.x or higher, the following additional attribut
 
 - [Bit Rate][Flow-Bit-Rate]
   This attribute **MUST** be present in the flow resource definition.
+  
 (**AMWA IMPL NOTE: The bit-rate is a nice to have concession and not strictly necessary - MUST?**)
+
 (**AMWA IMPL NOTE: flow attributes applicability must be extended to also include urn:x-nmos:format:mux**)
+
 (**AMWA IMPL NOTE: do we need additional flow attributes metadata about the underlying stream exposed?**)
 
 An example Flow resource is provided in the [Examples](../examples/).
@@ -62,12 +65,13 @@ For Nodes transmitting MPEG TS over RTP transport as defined by ST 2022-2, the S
 
 Sender resources provide no indication of media type or format since this is described by the associated Flow resource.
 
-The SDP file at the `manifest_href` **MUST** comply with the requirements of ST 2022-2 for RTP.
+The SDP file at the `manifest_href` **MUST** comply with the requirements of ST 2022-2 RTP transport in IS-05 v1.4.
 
 Additionally, the SDP file needs to convey, so far as the defined parameters allow, the same information about the stream as conveyed by the Source, Flow, and Sender attributes (or their defaults, when omitted) defined by this specification and IS-04.
 
 - The `bit_rate` attribute **MUST** be included to signal the peak bit rate this sender will be producing.
 - The `mux_video_media_type` attribute **MUST** be included for streams encapsulating JPEG 2000 or JPEG XS.
+  
 (**AMWA IMPL NOTE: Requires extending sender and capabilities attributes with mux_video_media_type**)
 
 An example Sender resource is provided in the [Examples](../examples/).
