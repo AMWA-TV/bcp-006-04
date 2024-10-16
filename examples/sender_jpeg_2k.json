@@ -1,0 +1,10 @@
+{
+  "id": "flow-1234",
+  "label": "Example SPTS Flow with JPEG 2000",
+  "description": "A Single Program Transport Stream containing JPEG 2000 video.",
+  "format": "urn:x-nmos:format:mux",
+  "media_type": "video/MP2T",
+  "bit_rate": 10000000,
+  "ts_format": "spts",
+  "encapsulated_format": "video/jpeg2000"
+}
