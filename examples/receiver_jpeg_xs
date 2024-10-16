@@ -1,0 +1,15 @@
+{
+  "id": "receiver-5678",
+  "label": "Example Receiver for MPTS with JPEG XS",
+  "description": "A Receiver capable of consuming a Multiple Program Transport Stream containing JPEG XS video over UDP.",
+  "media_types": ["video/MP2T"],
+  "transport": ["urn:x-nmos:transport:udp"],
+  "caps": {
+    "constraint_sets": [
+      {
+        "ts_format": "mpts",
+        "encapsulated_format": "video/jxsv"
+      }
+    ]
+  }
+}
