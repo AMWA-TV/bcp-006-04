@@ -15,7 +15,7 @@ The [Video Services Forum][VSF] developed Technical Recommendations [TR-01][TR-0
 
 AMWA IS-04 and IS-05 have support for RTP transport and can signal the media type `video/MP2T` as defined in [RFC 3555][RFC-3555].
 
-All IS-05 standards referenced in the RTP transport type are supported, including those defined in the following SMPTE standards [SMPTE 2022-5][ST-2022-5], [SMPTE 2022-6][ST-2022-6] and [SMPTE 2022-7][ST-2022-7].
+This BCP allows for the use of all transport types defined by IS-05 that can carry media type `video/MP2T`.
 
 ## Use of Normative Language
 
@@ -43,7 +43,6 @@ Source resources can be associated with many Flows at the same time.
 The Source is therefore unaffected by the use of MPEG TS or the encapsulated content.
 
 ### Flows
-
 The Flow resource **MUST** indicate `video/MP2T` in the `media_type` attribute, and `urn:x-nmos:format:mux` for the `format`.
 
 This has been permitted since IS-04 v1.1.
@@ -51,24 +50,14 @@ This has been permitted since IS-04 v1.1.
 For Nodes implementing IS-04 v1.3.x or higher, the following additional attributes defined in the [Flow Attributes register][Flow-Attributes] of the NMOS Parameter Registers are used for MPEG TS:
 
 - [Bit Rate][Flow-Bit-Rate]
-  The Flow resource **SHOULD** indicate the bit rate (in bits per second) of the MPEG TS stream.
-
-  The `bit_rate` integer value is expressed in bits per second, rounding up.
-
-- [TS Format][Flow-TS-Format]
-  The Flow resource **MUST** indicate the `ts_format` attribute. For streams encapsulating JPEG 2000 or JPEG XS as per TR-01 and TR-07, the `ts_format` **MUST** be set to `spts`. It **SHOULD NOT** be set to `mpts` in these cases.
-
-  The `ts_format` attribute takes the values `spts` or `mpts`.
-
-- [Encapsulated Format][Flow-Encapsulated-Format]
-  The Flow resource **MUST** indicate the format of the encapsulated content within the MPEG TS stream if it is JPEG 2000 or JPEG XS. It **MUST NOT** be included for other content.
-
-  The `encapsulated_format` attribute takes values such as `video/jpeg2000` for JPEG 2000 (as per TR-01) or `video/jxsv` for JPEG XS (as per TR-07).
+  This attribute **MUST** be present in the flow resource definition.
+(**AMWA IMPL NOTE: The bit-rate is a nice to have concession and not strictly necessary - MUST?**)
+(**AMWA IMPL NOTE: flow attributes applicability must be extended to also include urn:x-nmos:format:mux**)
+(**AMWA IMPL NOTE: do we need additional flow attributes metadata about the underlying stream exposed?**)
 
 An example Flow resource is provided in the [Examples](../examples/).
 
 ### Senders
-
 For Nodes transmitting MPEG TS over RTP transport as defined by ST 2022-2, the Sender `transport` attribute **MUST** be `urn:x-nmos:transport:rtp`.
 
 Sender resources provide no indication of media type or format since this is described by the associated Flow resource.
@@ -77,13 +66,9 @@ The SDP file at the `manifest_href` **MUST** comply with the requirements of ST 
 
 Additionally, the SDP file needs to convey, so far as the defined parameters allow, the same information about the stream as conveyed by the Source, Flow, and Sender attributes (or their defaults, when omitted) defined by this specification and IS-04.
 
-Therefore:
-
-- The correct `media_type` (`video/MP2T`) **MUST** be included in all cases.
-
-- The `bit_rate` attribute **SHOULD** be included if possible.
-
-- For streams encapsulating JPEG 2000 or JPEG XS, the `encapsulated_format` attribute **MUST** be included.
+- The `bit_rate` attribute **MUST** be included to signal the peak bit rate this sender will be producing.
+- The `mux_video_media_type` attribute **MUST** be included for streams encapsulating JPEG 2000 or JPEG XS.
+(**AMWA IMPL NOTE: Requires extending sender and capabilities attributes with mux_video_media_type**)
 
 An example Sender resource is provided in the [Examples](../examples/).
 
@@ -103,16 +88,11 @@ It is not always practical for the constraints to indicate every type of stream 
 
 The `constraint_sets` parameter within the `caps` object can be used to describe combinations of parameters which the Receiver can support, using the parameter constraints defined in the [Capabilities register][Capabilities-Register] of the NMOS Parameter Registers.
 
-The following parameter constraints can be used to express limitations on supported MPEG TS streams:
-
-- [Transport Bit Rate][Transport-Bit-Rate]
-
-- [TS Format][Transport-TS-Format]
-
-- [Encapsulated Format][Transport-Encapsulated-Format]
-
-- [Transport Stream ID][Transport-Stream-ID]
-
+The following parameter constraints can be used to express limitations on MPEG TS streams:
+- [Transport Bit Rate][Cap-Bit-Rate]
+- [Mux Video Media Type][Cap-Mux-Video-Media-Type]
+(**AMWA IMPL NOTE: Requires extending sender and capabilities attributes with mux_video_media_type**)
+  
 An example Receiver resource is provided in the [Examples](../examples/).
 
 ## MPEG TS IS-05 Senders and Receivers
@@ -125,7 +105,7 @@ A `PATCH` request on the **/staged** endpoint of an IS-05 Receiver can contain a
 
 The SDP file for an MPEG TS stream is expected to comply with [RFC 4566][RFC-4566], ST 2022-2 for RTP transport.
 
-For streams encapsulating JPEG 2000 or JPEG XS, the `encapsulated_format` attribute **MUST** be included.
+For streams encapsulating JPEG 2000 or JPEG XS, the `mux_video_media_type` attribute **MUST** be included.
 
 If the Receiver is not capable of consuming the stream described by the SDP file, it **SHOULD** reject the request.
 
@@ -166,8 +146,6 @@ Controllers **MUST** be capable of handling RTP transports as per the NMOS speci
 [Flow-Attributes]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/ "Flow Attributes Register"
 [Flow-Bit-Rate]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/#bit-rate "Flow Bit Rate"
 [Flow-TS-Format]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/#ts-format "Flow TS Format"
-[Flow-Encapsulated-Format]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/#encapsulated-format "Flow Encapsulated Format"
-[Transport-Bit-Rate]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#transport-bit-rate "Transport Bit Rate"
-[Transport-TS-Format]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#ts-format "TS Format"
-[Transport-Encapsulated-Format]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#encapsulated-format "Encapsulated Format"
-[Transport-Stream-ID]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#transport-stream-id "Transport Stream ID"
+[Cap-Mux-Video-Media-Type]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#mux_video_media_type "Mux Video Media Type"
+[Cap-Bit-Rate]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#transport-bit-rate "Transport Bit Rate"
+[Cap-Stream-ID]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#transport-stream-id "Transport Stream ID"
