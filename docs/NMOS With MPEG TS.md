@@ -171,7 +171,3 @@ Controllers **MUST** be capable of handling RTP transports as per the NMOS speci
 [Transport-TS-Format]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#ts-format "TS Format"
 [Transport-Encapsulated-Format]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#encapsulated-format "Encapsulated Format"
 [Transport-Stream-ID]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#transport-stream-id "Transport Stream ID"
-
-
-# Notes for the AMWA BCP MPEG-TS in NMOS working group
-Do we want to incorporate FEC support, or does this belong in a separate BCP -> [ST-2022-1]: https://ieeexplore.ieee.org/document/7291470 "SMPTE ST 2022-1: SMPTE Standard - Forward Error Correction for Real-Time Video/Audio Transport Over IP Networks"
