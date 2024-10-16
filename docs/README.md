@@ -23,6 +23,9 @@ See https://github.com/AMWA-TV/nmos-template/docs/README.md for an example of th
 - [Overview](Overview.md)
 - [Style Guide](Style%20Guide.md)
 
+### Drafts
+- [Strawman1](NMOS%20With%20MPEG%20TS.md)
+
 ### Miscellaneous
 
 - [Further Info](Further%20Info.md)
