@@ -65,6 +65,7 @@ For Nodes transmitting MPEG TS over RTP transport as defined by ST 2022-2, the S
 
 Sender resources provide no indication of media type or format since this is described by the associated Flow resource.
 
+(**AMWA IMPL NOTE: Do we need to mention SDP?**)
 The SDP file at the `manifest_href` **MUST** comply with the requirements of ST 2022-2 RTP transport in IS-05 v1.4.
 
 Additionally, the SDP file needs to convey, so far as the defined parameters allow, the same information about the stream as conveyed by the Source, Flow, and Sender attributes (or their defaults, when omitted) defined by this specification and IS-04.
@@ -95,6 +96,7 @@ The `constraint_sets` parameter within the `caps` object can be used to describe
 The following parameter constraints can be used to express limitations on MPEG TS streams:
 - [Transport Bit Rate][Cap-Bit-Rate]
 - [Mux Video Media Type][Cap-Mux-Video-Media-Type]
+  
 (**AMWA IMPL NOTE: Requires extending sender and capabilities attributes with mux_video_media_type**)
   
 An example Receiver resource is provided in the [Examples](../examples/).
