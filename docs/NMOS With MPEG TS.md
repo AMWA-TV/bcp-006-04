@@ -53,10 +53,11 @@ For Nodes implementing IS-04 v1.3.x or higher, the following additional attribut
   This attribute **MUST** be present in the flow resource definition.
   
 (**AMWA IMPL NOTE: The bit-rate is a nice to have concession and not strictly necessary - MUST?**)
+(**AMWA IMPL NOTE: bit-rate flow attributes applicability must be extended to also include urn:x-nmos:format:mux**)
 
-(**AMWA IMPL NOTE: flow attributes applicability must be extended to also include urn:x-nmos:format:mux**)
+- The `mux_video_media_type` attribute **MUST** be included for streams encapsulating JPEG 2000 or JPEG XS.
 
-(**AMWA IMPL NOTE: do we need additional flow attributes metadata about the underlying stream exposed?**)
+(**AMWA IMPL NOTE: Requires extending sender and capabilities attributes with mux_video_media_type**)
 
 An example Flow resource is provided in the [Examples](../examples/).
 
@@ -65,15 +66,7 @@ For Nodes transmitting MPEG TS over RTP transport as defined by ST 2022-2, the S
 
 Sender resources provide no indication of media type or format since this is described by the associated Flow resource.
 
-(**AMWA IMPL NOTE: Do we need to mention SDP?**)
-The SDP file at the `manifest_href` **MUST** comply with the requirements of ST 2022-2 RTP transport in IS-05 v1.4.
-
-Additionally, the SDP file needs to convey, so far as the defined parameters allow, the same information about the stream as conveyed by the Source, Flow, and Sender attributes (or their defaults, when omitted) defined by this specification and IS-04.
-
-- The `bit_rate` attribute **MUST** be included to signal the peak bit rate this sender will be producing.
-- The `mux_video_media_type` attribute **MUST** be included for streams encapsulating JPEG 2000 or JPEG XS.
-  
-(**AMWA IMPL NOTE: Requires extending sender and capabilities attributes with mux_video_media_type**)
+- The `bit_rate` attribute **MUST** be included to signal the max bit rate allocated to this sender.
 
 An example Sender resource is provided in the [Examples](../examples/).
 
@@ -109,6 +102,7 @@ The SDP file at the **/transportfile** endpoint on an IS-05 Sender **MUST** comp
 
 A `PATCH` request on the **/staged** endpoint of an IS-05 Receiver can contain an SDP file in the `transport_file` attribute.
 
+(**AMWA IMPL NOTE: Could SDP be removed from this part of text as well, SDP is an inherent optional requirement for RTP in IS-05 and we do not need further clarification**)
 The SDP file for an MPEG TS stream is expected to comply with [RFC 4566][RFC-4566], ST 2022-2 for RTP transport.
 
 For streams encapsulating JPEG 2000 or JPEG XS, the `mux_video_media_type` attribute **MUST** be included.
