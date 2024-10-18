@@ -9,19 +9,17 @@ This repository holds the source for this Specification, part of the family of [
 
 ### What does it do?
 
-- It provides a template for AMWA NMOS Interface Specifcations.
+- Enables Registration, Discovery, and Connection Management of MPEG TS Endpoints using the AMWA IS-04 and IS-05 NMOS Specifications.
 
 ### Why does it matter?
 
-- It helps ensure consistency between NMOS Specifications.
-- It helps us test our continuous integration.
+- It creates a set of requirements for interoperable implementations offering the Discovery and Connection Management of MPEG TS endpoints.
 
 ### How does it work?
 
-- It contains examples of [documentation](docs/), and [examples](examples/)
-- It provides a style guide and other advice for specification authors
-  - This includes how to configure the repo for automatic linting and rendering to `specs.amwa.tv`
-- Select `AMWA-TV/bcp-template` as the template when creating the new repo.
+- It specifies what resources and attributes MUST be provided when using NMOS with MPEG TS streams.
+- MPEG TS streams are considered as mux format, and this specification does not consider streams within the multiplex.
+- It provides examples of how to use IS-04 and IS-05 in the context of MPEG TS streams with RTP transport, such as VSF TR-01 and VSF TR-07
 
 <!-- INTRO-END -->
 
