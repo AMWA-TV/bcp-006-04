@@ -1,10 +1,10 @@
-# AMWA BCP-006-0x: NMOS With MPEG TS
+# AMWA BCP-006-0x: NMOS with MPEG TS \[Work In Progress\]
 {:.no_toc}
 
 * A markdown unordered list which will be replaced with the ToC, excluding the "Contents header" from above
 {:toc}
 
-_(c) AMWA 2021, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)_
+_(c) AMWA 2024, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)_
 ![NMOS logo](images/NMOS-logo.png)
 
 [MPEG Transport Stream][MPEG-TS] is a standard digital container format specified in ISO/IEC 13818-1, widely used for transmission and storage of audio, video, and data.
