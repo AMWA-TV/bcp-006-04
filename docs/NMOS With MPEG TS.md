@@ -53,7 +53,7 @@ For Nodes implementing IS-04 v1.3.x or higher, the following additional attribut
   This attribute **MUST** be present in the flow resource definition.
   
 - [Mux Video Media Type][Flow-Mux-Video-Media-Type]
-  The `mux_video_media_type` attribute **MUST** be included for streams encapsulating JPEG 2000 or JPEG XS.
+  The `mux_video_media_type` attribute **MUST** be included for streams encapsulating JPEG 2000 or JPEG XS. The `mux_video_media_type` **SHALL** use the JPEG XS/2000 media types from the [IANA Media Types Registry][IANA-MIME-Types]: `video/jpeg2000` and `video/jxsv`.
 
 An example Flow resource is provided in the [Examples](../examples/).
 
@@ -148,3 +148,4 @@ Controllers **MUST** be capable of handling RTP transports as per the NMOS speci
 [Cap-Mux-Video-Media-Type]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#mux_video_media_type "Mux Video Media Type"
 [Cap-Bit-Rate]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#transport-bit-rate "Transport Bit Rate"
 [Cap-Stream-ID]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#transport-stream-id "Transport Stream ID"
+[IANA-MIME-Types]: https://www.iana.org/assignments/media-types "IANA Media Types"
