@@ -70,7 +70,7 @@ The SDP file published at the `manifest_href` end-point **MUST** comply with the
 Additionally, the SDP transport file needs to convey, so far as the defined format-specific parameters allow, the same information about the stream as conveyed by the Source, Flow and Sender attributes defined by this specification and IS-04, unless such information is conveyed through in-band parameter sets.
 
 - The `bit_rate` attribute **MUST** be included to signal the max bit rate allocated to this sender.
-- For streams encapsulating JPEG 2000 or JPEG XS, the `mux_video_media_type` attribute **MUST** be included.
+- For streams encapsulating TR-01 JPEG 2000 or TR-07 JPEG XS, the `mux_video_media_type` attribute **MUST** be included as defined above.
 
 The sender attributes described above **MUST** be present in the SDP for transports where SDP is present.
 
