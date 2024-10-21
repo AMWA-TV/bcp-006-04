@@ -53,7 +53,7 @@ For Nodes implementing IS-04 v1.3.x or higher, the following additional attribut
   This attribute **MUST** be present in the flow resource definition.
   
 - [Mux Video Media Type][Flow-Mux-Video-Media-Type]
-  The `mux_video_media_type` attribute **MUST** be included for streams encapsulating JPEG 2000 or JPEG XS. The `mux_video_media_type` **SHALL** use the JPEG XS/2000 media types from the [IANA Media Types Registry][IANA-MIME-Types]: `video/jpeg2000` and `video/jxsv`.
+  The `mux_video_media_type` attribute **MUST** be included for streams encapsulating TR-01 JPEG 2000 or TR-07 JPEG XS. The `mux_video_media_type` **SHALL** use the JPEG XS/2000 media types from the [IANA Media Types Registry][IANA-MIME-Types]: `video/jpeg2000` and `video/jxsv`.
 
 An example Flow resource is provided in the [Examples](../examples/).
 
