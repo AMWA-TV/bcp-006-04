@@ -52,21 +52,27 @@ For Nodes implementing IS-04 v1.3.x or higher, the following additional attribut
 - [Bit Rate][Flow-Bit-Rate]
   This attribute **MUST** be present in the flow resource definition.
   
-(**AMWA IMPL NOTE: The bit-rate is a nice to have concession and not strictly necessary - MUST?**)
-(**AMWA IMPL NOTE: bit-rate flow attributes applicability must be extended to also include urn:x-nmos:format:mux**)
-
-- The `mux_video_media_type` attribute **MUST** be included for streams encapsulating JPEG 2000 or JPEG XS.
-
-(**AMWA IMPL NOTE: Requires extending sender and capabilities attributes with mux_video_media_type**)
+- [Mux Video Media Type][Flow-Mux-Video-Media-Type]
+  The `mux_video_media_type` attribute **MUST** be included for streams encapsulating JPEG 2000 or JPEG XS.
 
 An example Flow resource is provided in the [Examples](../examples/).
 
 ### Senders
 For Nodes transmitting MPEG TS over RTP transport as defined by ST 2022-2, the Sender `transport` attribute **MUST** be `urn:x-nmos:transport:rtp`.
 
-Sender resources provide no indication of media type or format since this is described by the associated Flow resource.
+Sender resources provide no indication of media type or bit-rate since this is described by the associated Flow resource.
+
+#### Sender SDP Usage
+This section is **REQUIRED** for RTP transports with SDP.
+
+The SDP file published at the `manifest_href` end-point **MUST** comply with the IS-05 usage guidelines for the specific transport and [RFC 4566][RFC-4566]
+
+Additionally, the SDP transport file needs to convey, so far as the defined format-specific parameters allow, the same information about the stream as conveyed by the Source, Flow and Sender attributes defined by this specification and IS-04, unless such information is conveyed through in-band parameter sets.
 
 - The `bit_rate` attribute **MUST** be included to signal the max bit rate allocated to this sender.
+- For streams encapsulating JPEG 2000 or JPEG XS, the `mux_video_media_type` attribute **MUST** be included.
+
+The sender attributes described above **MUST** be present in the SDP for transports where SDP is present.
 
 An example Sender resource is provided in the [Examples](../examples/).
 
@@ -89,27 +95,23 @@ The `constraint_sets` parameter within the `caps` object can be used to describe
 The following parameter constraints can be used to express limitations on MPEG TS streams:
 - [Transport Bit Rate][Cap-Bit-Rate]
 - [Mux Video Media Type][Cap-Mux-Video-Media-Type]
-  
-(**AMWA IMPL NOTE: Requires extending sender and capabilities attributes with mux_video_media_type**)
-  
+    
 An example Receiver resource is provided in the [Examples](../examples/).
 
 ## MPEG TS IS-05 Senders and Receivers
 
-Connection Management using IS-05 proceeds in exactly the same manner as for any other stream format carried over RTP.
+Connection Management using IS-05 proceeds in exactly the same manner as for any other stream format carried over the RTP tranport type.
 
-The SDP file at the **/transportfile** endpoint on an IS-05 Sender **MUST** comply with the same requirements described for the SDP file at the IS-04 Sender `manifest_href`.
+### Sender SDP Signalling
+If an SDP file is published at the **/transportfile** end-point it **MUST** comply with the IS-05 usage guidelines for the RTP transport and [RFC 4566][RFC-4566] 
 
-A `PATCH` request on the **/staged** endpoint of an IS-05 Receiver can contain an SDP file in the `transport_file` attribute.
-
-(**AMWA IMPL NOTE: Could SDP be removed from this part of text as well, SDP is an inherent optional requirement for RTP in IS-05 and we do not need further clarification**)
-The SDP file for an MPEG TS stream is expected to comply with [RFC 4566][RFC-4566], ST 2022-2 for RTP transport.
-
-For streams encapsulating JPEG 2000 or JPEG XS, the `mux_video_media_type` attribute **MUST** be included.
+The SDP file **MUST** comply with the same requirements described for the SDP file at the IS-04 Sender `manifest_href` as described in the [IS-04 Sender SDP Usage](#sender-sdp-usage) section.
 
 If the Receiver is not capable of consuming the stream described by the SDP file, it **SHOULD** reject the request.
 
 If it is unable to assess the stream compatibility, for example when the SDP file does not include some of the optional parameters, it **MAY** accept the request.
+
+A `PATCH` request on the **/staged** endpoint of an IS-05 Receiver can contain an SDP file in the `transport_file` attribute.
 
 An example SDP file is provided in the [Examples](../examples/).
 
@@ -137,15 +139,12 @@ Controllers **MUST** be capable of handling RTP transports as per the NMOS speci
 [IS-05]: https://specs.amwa.tv/is-05/ "AMWA IS-05 NMOS Device Connection Management Specification"
 [NMOS Parameter Registers]: https://specs.amwa.tv/nmos-parameter-registers/ "Common parameter values for AMWA NMOS Specifications"
 [ST-2022-2]: https://ieeexplore.ieee.org/document/7291602 "SMPTE ST 2022-2: Unidirectional Transport of Constant Bit Rate MPEG-2 Transport Streams on IP Networks"
-[ST-2022-5]:  https://ieeexplore.ieee.org/document/7291908 "Forward Error Correction for High Bit Rate Media Transport over IP Networks"
-[ST-2022-6]: https://ieeexplore.ieee.org/document/7289943 "Transport of High Bit Rate Media Signals over IP Networks (HBRMT)"
-[ST-2022-7]:  https://ieeexplore.ieee.org/document/7291851 "Seamless Protection Switching of SMTPE ST 2022 IP Datagrams"
 [RFC-4566]: https://datatracker.ietf.org/doc/html/rfc4566 "SDP: Session Description Protocol"
 [NMOS-Glossary]: https://specs.amwa.tv/nmos/main/docs/Glossary.html "NMOS Glossary"
 [Capabilities-Register]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/ "Capabilities Register"
 [Flow-Attributes]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/ "Flow Attributes Register"
 [Flow-Bit-Rate]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/#bit-rate "Flow Bit Rate"
-[Flow-TS-Format]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/#ts-format "Flow TS Format"
+[Flow-Mux-Video-Media-Type]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/#mux_video_media_type "Mux Video Media Type"
 [Cap-Mux-Video-Media-Type]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#mux_video_media_type "Mux Video Media Type"
 [Cap-Bit-Rate]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#transport-bit-rate "Transport Bit Rate"
 [Cap-Stream-ID]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#transport-stream-id "Transport Stream ID"
