@@ -7,5 +7,5 @@ t=0 0
 m=video 5004 RTP/AVP 33
 a=source-filter: incl IN IP4 224.1.1.1 192.168.1.2
 a=rtpmap:33 MP2T/90000
-a=bitrate:50000
+a=bit_rate:50000
 a=mux_video_media_type:video/jpeg2000
