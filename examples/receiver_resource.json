@@ -1,0 +1,14 @@
+{
+  "id": "3526683d-7a7f-4a6a-9986-a86d1534a84f",
+  "label": "Example Receiver for MPEG TS",
+  "description": "A Receiver capable of consuming an MPEG TS over RTP.",
+  "media_types": ["video/MP2T"],
+  "transport": "urn:x-nmos:transport:rtp",
+  "caps": {
+    "constraint_sets": [
+      {
+        "bit_rate": "20000"
+      }
+    ]
+  }
+}
