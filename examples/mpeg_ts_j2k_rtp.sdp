@@ -1,11 +1,9 @@
 v=0
 o=- 2890844526 2890844526 IN IP4 192.168.1.1
-s=Example MPEG `transport` Stream
-i=This is an example SDP file for an J2K MPEG-2 TS stream over RTP
+s=Example MPEG transport stream
+i=This is an example SDP file for MPEG-TS over RTP
 c=IN IP4 239.255.0.1/32
 t=0 0
 m=video 5004 RTP/AVP 33
 a=source-filter: incl IN IP4 224.1.1.1 192.168.1.2
 a=rtpmap:33 MP2T/90000
-a=bit_rate:50000
-a=mux_video_media_type:video/jpeg2000
