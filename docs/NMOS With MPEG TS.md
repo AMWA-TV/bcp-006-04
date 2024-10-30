@@ -45,34 +45,17 @@ The Source is therefore unaffected by the use of MPEG TS or the encapsulated con
 ### Flows
 The Flow resource **MUST** indicate `video/MP2T` in the `media_type` attribute, and `urn:x-nmos:format:mux` for the `format`.
 
-This has been permitted since IS-04 v1.1.
-
-For Nodes implementing IS-04 v1.3.x or higher, the following additional attributes defined in the [Flow Attributes register][Flow-Attributes] of the NMOS Parameter Registers are used for MPEG TS:
+For Nodes implementing IS-04 v1.3 or higher, the following additional attributes defined in the [Flow Attributes register][Flow-Attributes] of the NMOS Parameter Registers are used for MPEG TS:
 
 - [Bit Rate][Flow-Bit-Rate]
   This attribute **MUST** be present in the flow resource definition.
   
-- [Mux Video Media Type][Flow-Mux-Video-Media-Type]
-  The `mux_video_media_type` attribute **MUST** be included for streams encapsulating TR-01 JPEG 2000 or TR-07 JPEG XS. The `mux_video_media_type` **SHALL** use media types from the [IANA Media Types Registry][IANA-MIME-Types]: `video/jpeg2000` and `video/jxsv`.
-
 An example Flow resource is provided in the [Examples](../examples/).
 
 ### Senders
-For Nodes transmitting MPEG TS over RTP transport as defined by ST 2022-2, the Sender `transport` attribute **MUST** be `urn:x-nmos:transport:rtp`.
-
-Sender resources provide no indication of media type or bit-rate since this is described by the associated Flow resource.
-
-#### Sender SDP Usage
-This section is **REQUIRED** for RTP transports with SDP.
+For Nodes transmitting MPEG TS over RTP transport as defined by ST 2022-2, the Sender `transport` attribute **MUST** be `urn:x-nmos:transport:rtp` or one of its sub-classifications.
 
 The SDP file published at the `manifest_href` end-point **MUST** comply with the IS-05 usage guidelines for the specific transport and [RFC 4566][RFC-4566]
-
-Additionally, the SDP transport file needs to convey, so far as the defined format-specific parameters allow, the same information about the stream as conveyed by the Source, Flow and Sender attributes defined by this specification and IS-04, unless such information is conveyed through in-band parameter sets.
-
-- The `bit_rate` attribute **MUST** be included to signal the max bit rate allocated to this sender.
-- For streams encapsulating TR-01 JPEG 2000 or TR-07 JPEG XS, the `mux_video_media_type` attribute **MUST** be included as defined above.
-
-The sender attributes described above **MUST** be present in the SDP for transports where SDP is present.
 
 An example Sender resource is provided in the [Examples](../examples/).
 
@@ -80,11 +63,9 @@ An example Sender resource is provided in the [Examples](../examples/).
 
 Nodes capable of receiving MPEG TS streams, including those carrying JPEG 2000 or JPEG XS content as per VSF TR-01 and TR-07, **MUST** have a Receiver resource in the IS-04 Node API, which lists `video/MP2T` in the `media_types` array within the `caps` object.
 
-This has been permitted since IS-04 v1.1.
+If the Receiver supports RTP transport, it **MUST** have the `transport` attribute set to `urn:x-nmos:transport:rtp` or one of its sub-classifications..
 
-If the Receiver supports RTP transport, it **MUST** have the `transport` attribute set to `urn:x-nmos:transport:rtp`.
-
-If the Receiver has limitations on or preferences regarding the MPEG TS streams or the encapsulated content that it supports, the Receiver resource **MUST** indicate constraints in accordance with the [BCP-004-01][] Receiver Capabilities specification.
+If the Receiver has limitations on or preferences regarding the MPEG TS streams that it supports, the Receiver resource **MUST** indicate constraints in accordance with the [BCP-004-01][] Receiver Capabilities specification.
 
 The Receiver **SHOULD** express its constraints as precisely as possible, to allow a Controller to determine with a high level of confidence the Receiver's compatibility with the available streams.
 
@@ -94,7 +75,6 @@ The `constraint_sets` parameter within the `caps` object can be used to describe
 
 The following parameter constraints can be used to express limitations on MPEG TS streams:
 - [Transport Bit Rate][Cap-Bit-Rate]
-- [Mux Video Media Type][Cap-Mux-Video-Media-Type]
     
 An example Receiver resource is provided in the [Examples](../examples/).
 
@@ -102,26 +82,13 @@ An example Receiver resource is provided in the [Examples](../examples/).
 
 Connection Management using IS-05 proceeds in exactly the same manner as for any other stream format carried over the RTP tranport type.
 
-### Sender SDP Signalling
-If an SDP file is published at the **/transportfile** end-point it **MUST** comply with the IS-05 usage guidelines for the RTP transport and [RFC 4566][RFC-4566] 
-
-The SDP file **MUST** comply with the same requirements described for the SDP file at the IS-04 Sender `manifest_href` as described in the [IS-04 Sender SDP Usage](#sender-sdp-usage) section.
-
-If the Receiver is not capable of consuming the stream described by the SDP file, it **SHOULD** reject the request.
-
-If it is unable to assess the stream compatibility, for example when the SDP file does not include some of the optional parameters, it **MAY** accept the request.
-
-A `PATCH` request on the **/staged** endpoint of an IS-05 Receiver can contain an SDP file in the `transport_file` attribute.
+Any SDP file published at the **/transportfile** end-point **MUST** comply with the IS-05 usage guidelines for the RTP transport and [RFC 4566][RFC-4566].
 
 An example SDP file is provided in the [Examples](../examples/).
 
 ## Controllers
 
 Controllers **MUST** use IS-04 to discover MPEG TS Senders and Receivers and IS-05 to manage connections between them.
-
-Controllers **MUST** support IS-04 v1.3.x to implement all aspects of this specification.
-
-Partial implementation can be achieved using IS-04 v1.2 and earlier.
 
 Controllers **MUST** support the BCP-004-01 Receiver Capabilities mechanism and all the parameter constraints listed in this specification in order to evaluate the stream compatibility between MPEG TS Senders and Receivers.
 
