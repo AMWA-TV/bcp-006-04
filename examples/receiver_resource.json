@@ -7,7 +7,7 @@
   "caps": {
     "constraint_sets": [
       {
-        "bit_rate": "20000",    
+        "bit_rate": "20000"
       }
     ]
   }
