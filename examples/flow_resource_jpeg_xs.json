@@ -1,9 +1,8 @@
 {
   "id": "flow-5678",
-  "label": "Example MPTS Flow with JPEG XS",
-  "description": "A Multiple Program Transport Stream containing JPEG XS video.",
+  "label": "Example MPTS Flow",
+  "description": "An MPEG Transport Stream",
   "format": "urn:x-nmos:format:mux",
   "media_type": "video/MP2T",
-  "bit_rate": 20000,
-  "mux_video_media_type": "video/jxsv"
+  "bit_rate": 20000
 }
