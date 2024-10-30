@@ -1,14 +1,13 @@
 {
   "id": "receiver-5678",
-  "label": "Example Receiver for MPTS with JPEG XS",
-  "description": "A Receiver capable of consuming a Multiple Program Transport Stream containing JPEG XS video over UDP.",
+  "label": "Example Receiver for MPEG TS",
+  "description": "A Receiver capable of consuming an MPEG TS over RTP.",
   "media_types": ["video/MP2T"],
-  "transport": ["urn:x-nmos:transport:udp"],
+  "transport": "urn:x-nmos:transport:rtp",
   "caps": {
     "constraint_sets": [
       {
-        "bit_rate": "20000",
-        "mux_video_media_type": "video/jxsv"
+        "bit_rate": "20000",    
       }
     ]
   }
