@@ -1,5 +1,5 @@
 {
-  "id": "sender-1234",
+  "id": "68d0f0a2-96f5-4b95-91d8-13743e5bdaba",
   "label": "Example Sender for MPEG TS",
   "description": "A Sender transmitting an MPEG TS over RTP.",
   "flow_id": "flow-1234",
