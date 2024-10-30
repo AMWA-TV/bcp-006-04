@@ -1,7 +1,7 @@
 {
   "id": "sender-1234",
-  "label": "Example Sender for SPTS with JPEG 2000",
-  "description": "A Sender transmitting a Single Program Transport Stream containing JPEG 2000 video over RTP.",
+  "label": "Example Sender for MPEG TS",
+  "description": "A Sender transmitting an MPEG TS over RTP.",
   "flow_id": "flow-1234",
   "transport": "urn:x-nmos:transport:rtp",
   "manifest_href": "http://example.com/sdp/sender-1234.sdp"
