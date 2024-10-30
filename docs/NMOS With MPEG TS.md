@@ -9,7 +9,7 @@ _(c) AMWA 2024, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)_
 
 [MPEG Transport Stream][MPEG-TS] is a standard digital container format specified in ISO/IEC 13818-1, widely used for transmission and storage of audio, video, and data.
 
-SMPTE [ST 2022-2][ST-2022-2] defines the Unidirectional Transport of Constant Bit Rate MPEG-2 Transport Streams on IP Networks.
+SMPTE [ST 2022-2][ST-2022-2] defines the Unidirectional Transport of Constant Bit Rate MPEG-2 Transport Streams using RTP on IP Networks.
 
 The [Video Services Forum][VSF] developed Technical Recommendations [TR-01][TR-01] and [TR-07][TR-07], which cover the encapsulation of JPEG 2000 and JPEG XS video respectively within MPEG TS over IP networks, compliant with ST 2022-2.
 
@@ -100,19 +100,13 @@ Controllers **MUST** be capable of handling RTP transports as per the NMOS speci
 [TR-07]: https://vsf.tv/download/technical_recommendations/VSF_TR-07_2020-04-01.pdf "VSF TR-07 Transport of JPEG XS Video in MPEG-2 TS over RTP"
 [VSF]: https://vsf.tv/ "Video Services Forum"
 [RFC-2119]: https://datatracker.ietf.org/doc/html/rfc2119 "Key words for use in RFCs"
-[RFC-3550]: https://datatracker.ietf.org/doc/html/rfc3550 "RTP: A Transport Protocol for Real-Time Applications"
 [RFC-3555]: https://datatracker.ietf.org/doc/html/rfc3555 "MIME Type Registration of RTP Payload Types"
-[IS-04]: https://specs.amwa.tv/is-04/ "AMWA IS-04 NMOS Discovery and Registration Specification"
-[IS-05]: https://specs.amwa.tv/is-05/ "AMWA IS-05 NMOS Device Connection Management Specification"
-[NMOS Parameter Registers]: https://specs.amwa.tv/nmos-parameter-registers/ "Common parameter values for AMWA NMOS Specifications"
 [ST-2022-2]: https://ieeexplore.ieee.org/document/7291602 "SMPTE ST 2022-2: Unidirectional Transport of Constant Bit Rate MPEG-2 Transport Streams on IP Networks"
 [RFC-4566]: https://datatracker.ietf.org/doc/html/rfc4566 "SDP: Session Description Protocol"
 [NMOS-Glossary]: https://specs.amwa.tv/nmos/main/docs/Glossary.html "NMOS Glossary"
 [Capabilities-Register]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/ "Capabilities Register"
 [Flow-Attributes]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/ "Flow Attributes Register"
 [Flow-Bit-Rate]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/#bit-rate "Flow Bit Rate"
-[Flow-Mux-Video-Media-Type]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/#mux_video_media_type "Mux Video Media Type"
-[Cap-Mux-Video-Media-Type]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#mux_video_media_type "Mux Video Media Type"
 [Cap-Bit-Rate]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#transport-bit-rate "Transport Bit Rate"
-[Cap-Stream-ID]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#transport-stream-id "Transport Stream ID"
-[IANA-MIME-Types]: https://www.iana.org/assignments/media-types "IANA Media Types"
+
+
