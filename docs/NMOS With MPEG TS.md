@@ -45,17 +45,17 @@ The Source is therefore unaffected by the use of MPEG TS or the encapsulated con
 ### Flows
 The Flow resource **MUST** indicate `video/MP2T` in the `media_type` attribute, and `urn:x-nmos:format:mux` for the `format`.
 
-For Nodes implementing IS-04 v1.3 or higher, the following additional attributes defined in the [Flow Attributes register][Flow-Attributes] of the NMOS Parameter Registers are used for MPEG TS:
-
-- [Bit Rate][Flow-Bit-Rate]
-  This attribute **MUST** be present in the flow resource definition.
-  
 An example Flow resource is provided in the [Examples](../examples/).
 
 ### Senders
 For Nodes transmitting MPEG TS over RTP transport as defined by ST 2022-2, the Sender `transport` attribute **MUST** be `urn:x-nmos:transport:rtp` or one of its sub-classifications.
 
 The SDP file published at the `manifest_href` end-point **MUST** comply with the IS-05 usage guidelines for the specific transport and [RFC 4566][RFC-4566]
+
+For Nodes implementing IS-04 v1.3 or higher, the following additional attributes defined in the [sender attributes register][Sender-Attributes] of the NMOS Parameter Registers are used for MPEG TS:
+
+- [Bit Rate][Sender-Bit-Rate]
+  This attribute **MUST** be present as defined in equipment where the bit rate is known, and **MAY** be signaled in the sender SDP as "b=AS:bit-rate", where bit-rate is in integer units of kilobits/second.
 
 An example Sender resource is provided in the [Examples](../examples/).
 
@@ -73,8 +73,8 @@ It is not always practical for the constraints to indicate every type of stream 
 
 The `constraint_sets` parameter within the `caps` object can be used to describe combinations of parameters which the Receiver can support, using the parameter constraints defined in the [Capabilities register][Capabilities-Register] of the NMOS Parameter Registers.
 
-The following parameter constraints can be used to express limitations on MPEG TS streams:
-- [Transport Bit Rate][Cap-Bit-Rate]
+The following parameter constraints **MAY** be used to express limitations on MPEG TS streams:
+- [Transport Bit Rate][Transport-Bit-Rate]
     
 An example Receiver resource is provided in the [Examples](../examples/).
 
@@ -105,8 +105,8 @@ Controllers **MUST** be capable of handling RTP transports as per the NMOS speci
 [RFC-4566]: https://datatracker.ietf.org/doc/html/rfc4566 "SDP: Session Description Protocol"
 [NMOS-Glossary]: https://specs.amwa.tv/nmos/main/docs/Glossary.html "NMOS Glossary"
 [Capabilities-Register]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/ "Capabilities Register"
-[Flow-Attributes]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/ "Flow Attributes Register"
-[Flow-Bit-Rate]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/flow-attributes/#bit-rate "Flow Bit Rate"
-[Cap-Bit-Rate]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#transport-bit-rate "Transport Bit Rate"
+[Sender-Attributes]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/sender-attributes "Sender Attributes Register"
+[Sender-Bit-Rate]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/sender-attributes/#bit-rate "Sender Bit Rate"
+[Cap-Transport-Bit-Rate]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#transport-bit-rate "Transport Bit Rate"
 
 
