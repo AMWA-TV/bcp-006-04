@@ -1,4 +1,4 @@
-# AMWA BCP-006-0x: NMOS with MPEG TS \[Work In Progress\]
+# AMWA BCP-006-04: NMOS Support for MPEG Transport Streams \[Work In Progress\]
 {:.no_toc}
 
 * A markdown unordered list which will be replaced with the ToC, excluding the "Contents header" from above
