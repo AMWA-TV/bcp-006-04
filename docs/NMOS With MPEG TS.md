@@ -89,6 +89,7 @@ Controllers **MUST** support the BCP-004-01 Receiver Capabilities mechanism and 
 [MPEG-TS]: https://www.iso.org/standard/69461.html "ISO/IEC 13818-1 Systems"
 [VSF]: https://vsf.tv/ "Video Services Forum"
 [RFC-2119]: https://datatracker.ietf.org/doc/html/rfc2119 "Key words for use in RFCs"
+[ST-2022-2]: https://ieeexplore.ieee.org/document/7291602 "SMPTE ST 2022-2: Unidirectional Transport of Constant Bit Rate MPEG-2 Transport Streams on IP Networks"
 [RFC-4855]: https://datatracker.ietf.org/doc/html/rfc4855 "Media Type Registration of RTP Payload Formats"
 [NMOS-Glossary]: https://specs.amwa.tv/nmos/main/docs/Glossary.html "NMOS Glossary"
 [Capabilities-Register]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/ "Capabilities Register"
