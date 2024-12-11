@@ -52,7 +52,7 @@ For Nodes implementing IS-04 v1.3 or higher, the following additional attributes
 - [Bit Rate][Sender-Transport-Bit-Rate]
   This attribute **MUST** be present as defined in equipment where the bit rate is known.
 
-The SDP file published at the `manifest_href` end-point **MUST** comply with the IS-05 usage guidelines for the specific transport and [RFC 4566][RFC-4566]
+For transports requiring an SDP, the sender **MUST** publish this at the `manifest_href` end-point and **MUST** comply with the IS-05 usage guidelines for the specific transport and [RFC 4566][RFC-4566]
 
 An example Sender resource is provided in the [Examples](../examples/).
 ## Receivers
@@ -70,14 +70,12 @@ The following parameter constraints **MAY** be used to express limitations on MP
 - [Transport Bit Rate][Cap-Transport-Bit-Rate]
     
 An example Receiver resource is provided in the [Examples](../examples/).
-
 ## MPEG TS IS-05 Senders and Receivers
-
 Connection Management follows IS-05 for the transport type.
 
-Any SDP file published at the **/transportfile** end-point **MUST** comply with the IS-05 usage guidelines for the RTP transport and [RFC 4566][RFC-4566].
+For transports requiring an SDP, the sender **MUST** publish this at the **/transportfile** end-point and **MUST** comply with the IS-05 usage guidelines for the specific transport and [RFC 4566][RFC-4566]
 
-An example SDP file is provided in the [Examples](../examples/).
+An example SDP is provided in the [Examples](../examples/).
 
 ## Controllers
 
