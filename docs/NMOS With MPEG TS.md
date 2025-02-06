@@ -11,6 +11,8 @@ _(c) AMWA 2024, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)_
 
 SMPTE [ST 2022-2][ST-2022-2] defines the Unidirectional Transport of Constant Bit Rate MPEG-2 Transport Streams using RTP on IP Networks.
 
+This document outlines how devices capable of MPEG TS transports can be managed through NMOS IS-04 and IS-05.
+
 This BCP allows for the use of all transport types defined in the [Transports][Transports-Registry] registry that can carry media type `video/MP2T`.
 
 ## Use of Normative Language
@@ -39,12 +41,12 @@ Source resources can be associated with many Flows at the same time.
 The Source is therefore unaffected by the use of MPEG TS or the encapsulated content.
 
 ### Flows
-The Flow resource **MUST** indicate `video/MP2T` in the `media_type` attribute, and `urn:x-nmos:format:mux` for the `format`.
+The Flow resource **MUST** indicate `video/MP2T` in the `media_type` attribute, and `urn:x-nmos:format:mux` for the `format`, as defined in the [IS-04 Flow Mux Schema][Flow-Mux-Schema]
 
 An example Flow resource is provided in the [Examples](../examples/).
 
 ## MPEG TS IS-04 Senders and Receivers
-IS-04 Senders and Receivers **MUST** use transports defined in the [Transports][Transports-Registry] parameter registry.
+IS-04 MPEG TS capable Senders and Receivers **MUST** use transports defined in the [Transports][Transports-Registry] parameter registry.
 
 ### Senders
 For Nodes implementing IS-04 v1.3 or higher, the following additional attributes defined in the [sender attributes register][Sender-Attributes] of the NMOS Parameter Registers are used for MPEG TS:
@@ -56,7 +58,7 @@ For transports requiring an SDP, the sender **MUST** publish this at the `manife
 
 An example Sender resource is provided in the [Examples](../examples/).
 ## Receivers
-Nodes capable of receiving MPEG TS streams **MUST** have a Receiver resource in the IS-04 Node API, which lists `video/MP2T` in the `media_types` array within the `caps` object.
+Nodes capable of receiving MPEG TS streams **MUST** have a Receiver resource in the IS-04 Node API, which lists `video/MP2T` in the `media_types` array within the `caps` object, and **MUST** signal `urn:x-nmos:format:mux` as `format`, as defined in the [IS-04 Receiver Mux Schema][Receiver-Mux-Schema].
 
 If the Receiver has limitations on or preferences regarding the MPEG TS streams that it supports, the Receiver resource **MUST** indicate constraints in accordance with the [BCP 004-01][BCP-004-01] Receiver Capabilities specification.
 
@@ -71,9 +73,11 @@ The following parameter constraints **MAY** be used to express limitations on MP
     
 An example Receiver resource is provided in the [Examples](../examples/).
 ## MPEG TS IS-05 Senders and Receivers
-Connection Management follows IS-05 for the transport type.
+All transport types capable of carrying MPEG TS streams **MAY** be used. Connection Management follows IS-05 for the indicated transport type. 
 
-For transports requiring an SDP, the sender **MUST** publish this at the **/transportfile** end-point and **MUST** comply with the IS-05 usage guidelines for the specific transport and [RFC 4566][RFC-4566]
+For example, RTP **MUST** signal `urn:x-nmos:transport:rtp` as transport type, and **MUST** provide all manadatory elements of the IS-05 [RTP Transport Schema][RTP-Transport-Schema], or as defined in the transports registry.
+
+For transports requiring an SDP, such as RTP, the sender **MUST** publish this at the **/transportfile** end-point and **MUST** comply with the IS-05 usage guidelines for the specific transport and [RFC 4566][RFC-4566]
 
 An example SDP is provided in the [Examples](../examples/).
 
@@ -95,5 +99,7 @@ Controllers **MUST** support the BCP-004-01 Receiver Capabilities mechanism and 
 [Sender-Transport-Bit-Rate]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/sender-attributes/#bit-rate "Sender Transport Bit Rate"
 [Cap-Transport-Bit-Rate]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#transport-bit-rate "Transport Bit Rate"
 [Transports-Registry]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/transports "Transports"
-
+[Receiver-Mux-Schema]: https://specs.amwa.tv/is-04/releases/v1.3.3/APIs/schemas/with-refs/receiver_mux.html "IS-04 Receiver Mux Schema"
+[Flow-Mux-Schema]: https://specs.amwa.tv/is-04/releases/v1.3.3/APIs/schemas/with-refs/flow_mux.html "IS-04 Flow Mux Schema"
+[RTP-Transport-Schema]: https://specs.amwa.tv/is-05/releases/v1.1.2/APIs/schemas/with-refs/sender_transport_params_rtp.html "RTP Transport Schema"
 
