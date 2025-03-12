@@ -4,5 +4,6 @@
   "description": "A Sender transmitting an MPEG TS over RTP.",
   "flow_id": "144927fe-f0ce-449d-b261-3f011bd87352",
   "transport": "urn:x-nmos:transport:rtp",
-  "manifest_href": "http://example.com/sdp/sender-1234.sdp"
+  "manifest_href": "http://example.com/sdp/sender-1234.sdp",
+  "bit_rate": 100000
 }
