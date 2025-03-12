@@ -75,7 +75,7 @@ An example Receiver resource is provided in the [Examples](../examples/).
 ## MPEG TS IS-05 Senders and Receivers
 All transport types capable of carrying MPEG TS streams **MAY** be used. Connection Management follows IS-05 for the indicated transport type. 
 
-For example, RTP **MUST** signal `urn:x-nmos:transport:rtp` as transport type, and **MUST** provide all manadatory elements of the IS-05 [RTP Transport Schema][RTP-Transport-Schema], or as defined in the transports registry.
+Senders and Receivers **MUST** be compliant with the IS-05 requirements for any permitted IS-05 transport.
 
 For transports requiring an SDP, such as RTP, the sender **MUST** publish this at the **/transportfile** end-point and **MUST** comply with the IS-05 usage guidelines for the specific transport and [RFC 4566][RFC-4566]
 
