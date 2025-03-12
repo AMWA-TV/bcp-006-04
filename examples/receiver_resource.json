@@ -4,7 +4,7 @@
   "description": "A Receiver capable of consuming an MPEG TS over RTP.",
   "transport": "urn:x-nmos:transport:rtp",
   "caps": {
-    "media_types": ["video/MP2T]
+    "media_types": ["video/MP2T"]
     "constraint_sets": [
       {
         "bit_rate": "20000"
