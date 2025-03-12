@@ -46,7 +46,7 @@ The Flow resource **MUST** indicate `video/MP2T` in the `media_type` attribute, 
 An example Flow resource is provided in the [Examples](../examples/).
 
 ## MPEG TS IS-04 Senders and Receivers
-IS-04 MPEG TS capable Senders and Receivers **MUST** use transports defined in the [Transports][Transports-Registry] parameter registry.
+MPEG TS capable Senders and Receivers **MUST** use IS-05 permitted transports.
 
 ### Senders
 For Nodes implementing IS-04 v1.3 or higher, the following additional attributes defined in the [sender attributes register][Sender-Attributes] of the NMOS Parameter Registers are used for MPEG TS:
