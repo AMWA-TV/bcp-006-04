@@ -89,10 +89,9 @@ Controllers **MUST** support the BCP-004-01 Receiver Capabilities mechanism and 
 
 [BCP-004-01]: https://specs.amwa.tv/bcp-004-01/ "AMWA BCP-004-01 NMOS Receiver Capabilities"
 [MPEG-TS]: https://www.iso.org/standard/69461.html "ISO/IEC 13818-1 Systems"
-[VSF]: https://vsf.tv/ "Video Services Forum"
 [RFC-2119]: https://datatracker.ietf.org/doc/html/rfc2119 "Key words for use in RFCs"
 [ST-2022-2]: https://ieeexplore.ieee.org/document/7291602 "SMPTE ST 2022-2: Unidirectional Transport of Constant Bit Rate MPEG-2 Transport Streams on IP Networks"
-[RFC-4855]: https://datatracker.ietf.org/doc/html/rfc4855 "Media Type Registration of RTP Payload Formats"
+[RFC-4566]: https://datatracker.ietf.org/doc/html/rfc4566 "SDP: Session Description Protocol"
 [NMOS-Glossary]: https://specs.amwa.tv/nmos/main/docs/Glossary.html "NMOS Glossary"
 [Capabilities-Register]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/ "Capabilities Register"
 [Sender-Attributes]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/sender-attributes "Sender Attributes Register"
@@ -101,5 +100,3 @@ Controllers **MUST** support the BCP-004-01 Receiver Capabilities mechanism and 
 [Transports-Registry]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/transports "Transports"
 [Receiver-Mux-Schema]: https://specs.amwa.tv/is-04/releases/v1.3.3/APIs/schemas/with-refs/receiver_mux.html "IS-04 Receiver Mux Schema"
 [Flow-Mux-Schema]: https://specs.amwa.tv/is-04/releases/v1.3.3/APIs/schemas/with-refs/flow_mux.html "IS-04 Flow Mux Schema"
-[RTP-Transport-Schema]: https://specs.amwa.tv/is-05/releases/v1.1.2/APIs/schemas/with-refs/sender_transport_params_rtp.html "RTP Transport Schema"
-
