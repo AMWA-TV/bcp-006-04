@@ -5,5 +5,14 @@
   "flow_id": "144927fe-f0ce-449d-b261-3f011bd87352",
   "transport": "urn:x-nmos:transport:rtp",
   "manifest_href": "http://example.com/sdp/sender-1234.sdp",
-  "bit_rate": 100000
+  "bit_rate": 100000,
+  "caps": {},
+  "device_id": "c6a1ece0-214e-421b-8f0c-5a0f1f13b846",
+  "interface_bindings": [
+    "eth0"
+    ],
+  "subscription": {
+    "active": true,
+    "receiver_id": null
+    }
 }
