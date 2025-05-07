@@ -26,66 +26,66 @@ The NMOS terms 'Controller', 'Node', 'Source', 'Flow', 'Sender', 'Receiver' are 
 
 ## MPEG TS IS-04 Sources, Flows
 
-Nodes capable of transmitting MPEG TS streams **MUST** have Source, Flow, and Sender resources in the IS-04 Node API.
+Nodes capable of transmitting MPEG TS streams MUST have Source, Flow, and Sender resources in the IS-04 Node API.
 
-Nodes **MUST** support IS-04 v1.3 to implement all aspects of this specification.
+Nodes MUST support IS-04 v1.3 to implement all aspects of this specification.
 
 Partial implementation can be achieved using IS-04 v1.2 and earlier.
 
 ### Sources
 
-The Source resource **MUST** indicate `urn:x-nmos:format:mux` for the `format`.
+The Source resource MUST indicate `urn:x-nmos:format:mux` for the `format`.
 
 Source resources can be associated with many Flows at the same time.
 
 The Source is therefore unaffected by the use of MPEG TS or the encapsulated content.
 
 ### Flows
-The Flow resource **MUST** indicate `video/MP2T` in the `media_type` attribute, and `urn:x-nmos:format:mux` for the `format`, as defined in the [IS-04 Flow Mux Schema][Flow-Mux-Schema]
+The Flow resource MUST indicate `video/MP2T` in the `media_type` attribute, and `urn:x-nmos:format:mux` for the `format`, as defined in the [IS-04 Flow Mux Schema][Flow-Mux-Schema]
 
 An example Flow resource is provided in the [Examples](../examples/).
 
 ## MPEG TS IS-04 Senders and Receivers
-MPEG TS capable Senders and Receivers **MUST** use IS-05 permitted transports.
+MPEG TS capable Senders and Receivers MUST use IS-05 permitted transports.
 
 ### Senders
 For Nodes implementing IS-04 v1.3 or higher, the following additional attributes defined in the [sender attributes register][Sender-Attributes] of the NMOS Parameter Registers are used for MPEG TS:
 
 - [Bit Rate][Sender-Transport-Bit-Rate]
-  This attribute **MUST** be present as defined in equipment where the bit rate is known.
+  This attribute MUST be present as defined in equipment where the bit rate is known.
 
-For transports requiring an SDP, the sender **MUST** publish this at the `manifest_href` end-point and **MUST** comply with the IS-05 usage guidelines for the specific transport and [RFC 4566][RFC-4566]
+For transports requiring an SDP, the sender MUST publish this at the `manifest_href` end-point and MUST comply with the IS-05 usage guidelines for the specific transport and [RFC 4566][RFC-4566]
 
 An example Sender resource is provided in the [Examples](../examples/).
 ## Receivers
-Nodes capable of receiving MPEG TS streams **MUST** have a Receiver resource in the IS-04 Node API, which lists `video/MP2T` in the `media_types` array within the `caps` object, and **MUST** signal `urn:x-nmos:format:mux` as `format`, as defined in the [IS-04 Receiver Mux Schema][Receiver-Mux-Schema].
+Nodes capable of receiving MPEG TS streams MUST have a Receiver resource in the IS-04 Node API, which lists `video/MP2T` in the `media_types` array within the `caps` object, and MUST signal `urn:x-nmos:format:mux` as `format`, as defined in the [IS-04 Receiver Mux Schema][Receiver-Mux-Schema].
 
-If the Receiver has limitations on or preferences regarding the MPEG TS streams that it supports, the Receiver resource **MUST** indicate constraints in accordance with the [BCP 004-01][BCP-004-01] Receiver Capabilities specification.
+If the Receiver has limitations on or preferences regarding the MPEG TS streams that it supports, the Receiver resource MUST indicate constraints in accordance with the [BCP 004-01][BCP-004-01] Receiver Capabilities specification.
 
-The Receiver **SHOULD** express its constraints as precisely as possible, to allow a Controller to determine with a high level of confidence the Receiver's compatibility with the available streams.
+The Receiver SHOULD express its constraints as precisely as possible, to allow a Controller to determine with a high level of confidence the Receiver's compatibility with the available streams.
 
-It is not always practical for the constraints to indicate every type of stream that a Receiver can or cannot consume successfully; however, they **SHOULD** describe as many of its commonly used operating points as practical and any preferences among them.
+It is not always practical for the constraints to indicate every type of stream that a Receiver can or cannot consume successfully; however, they SHOULD describe as many of its commonly used operating points as practical and any preferences among them.
 
 The `constraint_sets` parameter within the `caps` object can be used to describe combinations of parameters which the Receiver can support, using the parameter constraints defined in the [Capabilities register][Capabilities-Register] of the NMOS Parameter Registers.
 
-The following parameter constraints **MAY** be used to express limitations on MPEG TS streams:
+The following parameter constraints MAY be used to express limitations on MPEG TS streams:
 - [Transport Bit Rate][Cap-Transport-Bit-Rate]
     
 An example Receiver resource is provided in the [Examples](../examples/).
 ## MPEG TS IS-05 Senders and Receivers
-All transport types capable of carrying MPEG TS streams **MAY** be used. Connection Management follows IS-05 for the indicated transport type. 
+All transport types capable of carrying MPEG TS streams MAY be used. Connection Management follows IS-05 for the indicated transport type. 
 
-Senders and Receivers **MUST** be compliant with the IS-05 requirements for any permitted IS-05 transport.
+Senders and Receivers MUST be compliant with the IS-05 requirements for any permitted IS-05 transport.
 
-For transports requiring an SDP, such as RTP, the sender **MUST** publish this at the **/transportfile** end-point and **MUST** comply with the IS-05 usage guidelines for the specific transport and [RFC 4566][RFC-4566].
+For transports requiring an SDP, such as RTP, the sender MUST publish this at the /transportfile end-point and MUST comply with the IS-05 usage guidelines for the specific transport and [RFC 4566][RFC-4566].
 
 An example SDP is provided in the [Examples](../examples/).
 
 ## Controllers
 
-Controllers **MUST** use IS-04 to discover MPEG TS Senders and Receivers and IS-05 to manage connections between them.
+Controllers MUST use IS-04 to discover MPEG TS Senders and Receivers and IS-05 to manage connections between them.
 
-Controllers **MUST** support the BCP-004-01 Receiver Capabilities mechanism and all the parameter constraints listed in this specification in order to evaluate the stream compatibility between MPEG TS Senders and Receivers.
+Controllers MUST support the BCP-004-01 Receiver Capabilities mechanism and all the parameter constraints listed in this specification in order to evaluate the stream compatibility between MPEG TS Senders and Receivers.
 
 [BCP-004-01]: https://specs.amwa.tv/bcp-004-01/ "AMWA BCP-004-01 NMOS Receiver Capabilities"
 [MPEG-TS]: https://www.iso.org/standard/69461.html "ISO/IEC 13818-1 Systems"
