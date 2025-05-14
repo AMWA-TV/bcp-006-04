@@ -13,7 +13,7 @@ SMPTE [ST 2022-2][ST-2022-2] defines the Unidirectional Transport of Constant Bi
 
 This document outlines how devices capable of MPEG TS transports can be managed through NMOS IS-04 and IS-05.
 
-This BCP allows for the use of all transport types defined in the [Transports][Transports-Registry] registry that can carry media type `video/MP2T`.
+This BCP allows for the use of all transport types defined in the [Transports register][Transports-Register] that can carry media type `video/MP2T`.
 
 ## Use of Normative Language
 
@@ -49,18 +49,18 @@ An example Flow resource is provided in the [Examples](../examples/).
 MPEG TS capable Senders and Receivers MUST use IS-05 permitted transports.
 
 ### Senders
-For Nodes implementing IS-04 v1.3 or higher, the following additional attributes defined in the [sender attributes register][Sender-Attributes] of the NMOS Parameter Registers are used for MPEG TS:
+For Nodes implementing IS-04 v1.3 or higher, the following additional attributes defined in the [Sender Attributes register][Sender-Attributes] of the NMOS Parameter Registers are used for MPEG TS:
 
 - [Bit Rate][Sender-Transport-Bit-Rate]
   This attribute MUST be present as defined in equipment where the bit rate is known.
 
-For transports requiring an SDP, the sender MUST publish this at the `manifest_href` end-point and MUST comply with the IS-05 usage guidelines for the specific transport and [RFC 4566][RFC-4566]
+For transports requiring an SDP, the sender MUST publish this at the `manifest_href` endpoint and MUST comply with the IS-05 usage guidelines for the specific transport and [RFC 4566][RFC-4566]
 
 An example Sender resource is provided in the [Examples](../examples/).
 ## Receivers
 Nodes capable of receiving MPEG TS streams MUST have a Receiver resource in the IS-04 Node API, which lists `video/MP2T` in the `media_types` array within the `caps` object, and MUST signal `urn:x-nmos:format:mux` as `format`, as defined in the [IS-04 Receiver Mux Schema][Receiver-Mux-Schema].
 
-If the Receiver has limitations on or preferences regarding the MPEG TS streams that it supports, the Receiver resource MUST indicate constraints in accordance with the [BCP 004-01][BCP-004-01] Receiver Capabilities specification.
+If the Receiver has limitations on or preferences regarding the MPEG TS streams that it supports, the Receiver resource MUST indicate constraints in accordance with the [BCP-004-01][BCP-004-01] Receiver Capabilities specification.
 
 The Receiver SHOULD express its constraints as precisely as possible, to allow a Controller to determine with a high level of confidence the Receiver's compatibility with the available streams.
 
@@ -77,7 +77,7 @@ All transport types capable of carrying MPEG TS streams MAY be used. Connection 
 
 Senders and Receivers MUST be compliant with the IS-05 requirements for any permitted IS-05 transport.
 
-For transports requiring an SDP, such as RTP, the sender MUST publish this at the /transportfile end-point and MUST comply with the IS-05 usage guidelines for the specific transport and [RFC 4566][RFC-4566].
+For transports requiring an SDP, such as RTP, the sender MUST publish this at the /transportfile endpoint and MUST comply with the IS-05 usage guidelines for the specific transport and [RFC 4566][RFC-4566].
 
 An example SDP is provided in the [Examples](../examples/).
 
@@ -88,15 +88,15 @@ Controllers MUST use IS-04 to discover MPEG TS Senders and Receivers and IS-05 t
 Controllers MUST support the BCP-004-01 Receiver Capabilities mechanism and all the parameter constraints listed in this specification in order to evaluate the stream compatibility between MPEG TS Senders and Receivers.
 
 [BCP-004-01]: https://specs.amwa.tv/bcp-004-01/ "AMWA BCP-004-01 NMOS Receiver Capabilities"
-[MPEG-TS]: https://www.iso.org/standard/69461.html "ISO/IEC 13818-1 Systems"
+[MPEG-TS]: https://www.iso.org/standard/87619.html "ISO/IEC 13818-1 Systems"
 [RFC-2119]: https://datatracker.ietf.org/doc/html/rfc2119 "Key words for use in RFCs"
-[ST-2022-2]: https://ieeexplore.ieee.org/document/7291602 "SMPTE ST 2022-2: Unidirectional Transport of Constant Bit Rate MPEG-2 Transport Streams on IP Networks"
+[ST-2022-2]: https://pub.smpte.org/pub/st2022-2/ "SMPTE ST 2022-2: Unidirectional Transport of Constant Bit Rate MPEG-2 Transport Streams on IP Networks"
 [RFC-4566]: https://datatracker.ietf.org/doc/html/rfc4566 "SDP: Session Description Protocol"
 [NMOS-Glossary]: https://specs.amwa.tv/nmos/main/docs/Glossary.html "NMOS Glossary"
 [Capabilities-Register]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/ "Capabilities Register"
 [Sender-Attributes]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/sender-attributes "Sender Attributes Register"
 [Sender-Transport-Bit-Rate]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/sender-attributes/#bit-rate "Sender Transport Bit Rate"
 [Cap-Transport-Bit-Rate]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/capabilities/#transport-bit-rate "Transport Bit Rate"
-[Transports-Registry]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/transports "Transports"
+[Transports-Register]: https://specs.amwa.tv/nmos-parameter-registers/branches/main/transports "Transports"
 [Receiver-Mux-Schema]: https://specs.amwa.tv/is-04/releases/v1.3.3/APIs/schemas/with-refs/receiver_mux.html "IS-04 Receiver Mux Schema"
 [Flow-Mux-Schema]: https://specs.amwa.tv/is-04/releases/v1.3.3/APIs/schemas/with-refs/flow_mux.html "IS-04 Flow Mux Schema"
