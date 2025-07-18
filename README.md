@@ -1,4 +1,4 @@
-# \[Work In Progress\] AMWA BCP-006-04 NMOS Support for MPEG Transport Streams
+# AMWA BCP-006-04 NMOS Support for MPEG Transport Streams
 
 [![Lint Status](https://github.com/AMWA-TV/bcp-006-04/workflows/Lint/badge.svg)](https://github.com/AMWA-TV/bcp-006-04/actions?query=workflow%3ALint)
 [![Render Status](https://github.com/AMWA-TV/bcp-006-04/workflows/Render/badge.svg)](https://github.com/AMWA-TV/bcp-006-04/actions?query=workflow%3ARender)
