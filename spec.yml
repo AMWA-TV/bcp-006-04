@@ -6,5 +6,5 @@ repo_name: bcp-006-04
 alt_repo_name: bcp-mpeg-ts
 repo_url: https://github.com/AMWA-TV/bcp-006-04
 releases:
-default_branch: main
+default_branch: v1.0.x
 show_in_index: true
