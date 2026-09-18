@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      <url>
+        <loc>https://specs.amwa.tv/new/bcp-006-04/v1.0.x/</loc>
+      </url>
+      <url>
+        <loc>https://specs.amwa.tv/new/bcp-006-04/v1.0.x/examples/</loc>
+      </url>
+      <url>
+        <loc>https://specs.amwa.tv/new/bcp-006-04/v1.0.x/examples/flow_resource/</loc>
+      </url>
+      <url>
+        <loc>https://specs.amwa.tv/new/bcp-006-04/v1.0.x/examples/receiver_resource/</loc>
+      </url>
+      <url>
+        <loc>https://specs.amwa.tv/new/bcp-006-04/v1.0.x/examples/sender_resource/</loc>
+      </url>
+      <url>
+        <loc>https://specs.amwa.tv/new/bcp-006-04/v1.0.x/examples/source_resource/</loc>
+      </url>
+</urlset>

@@ -1,0 +1,12 @@
+{
+  "id":		"0713872a-47dc-5463-a9c9-124daa066bd8",
+  "label":	"MPEG-TS Source",
+  "description":"Output",
+  "version":	"1742975352:51310640",
+  "parents":	[],	
+  "tags":	{},
+  "format":	"urn:x-nmos:format:mux",
+  "caps": 	{},
+  "device_id":	"fcdf1844-2b08-4879-918a-93e844c24d4e",
+  "clock_name":	"clk0"
+}
