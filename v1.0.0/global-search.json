@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "repository": "AMWA-TV/bcp-006-04",
+  "documents": [
+    {
+      "title": "AMWA BCP-006-04: NMOS Support for MPEG Transport Streams",
+      "url": "https://specs.amwa.tv/new/bcp-006-04/latest/NMOS%20With%20MPEG%20TS/",
+      "text": "AMWA BCP-006-04: NMOS Support for MPEG Transport Streams AMWA BCP-006-04: NMOS Support for MPEG Transport Streams Use of Normative Language Definitions MPEG TS IS-04 Sources, Flows Sources Flows MPEG TS IS-04 Senders and Receivers Senders Receivers MPEG TS IS-05 Senders and Receivers Controllers AMWA BCP-006-04: NMOS Support for MPEG Transport Streams - AMWA BCP-006-04 NMOS Support for MPEG Transport Streams Skip to content AMWA BCP-006-04: NMOS Support for MPEG Transport Streams (c) AMWA 2024, CC Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) MPEG Transport Stream is a standard digital container format specified in ISO/IEC 13818-1, widely used for transmission and storage of audio, video, and data. SMPTE ST 2022-2 defines the Unidirectional Transport of Constant Bit Rate MPEG-2 Transport Streams using RTP on IP Networks. This document outlines how devices capable of MPEG TS transports can be managed through NMOS IS-04 and IS-05. This BCP allows for the use of all transport types defined in the Transports register that can carry media type video/MP2T . Use of Normative Language The key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"SHOULD NOT\", \"RECOMMENDED\", \"MAY\", and \"OPTIONAL\" in this document are to be interpreted as described in RFC 2119 . Definitions The NMOS terms 'Controller', 'Node', 'Source', 'Flow', 'Sender', 'Receiver' are used as defined in the NMOS Glossary . MPEG TS IS-04 Sources, Flows Nodes capable of transmitting MPEG TS streams MUST have Source, Flow, and Sender resources in the IS-04 Node API. Nodes MUST support IS-04 v1.3 to implement all aspects of this specification. Partial implementation can be achieved using IS-04 v1.2 and earlier. Sources The Source resource MUST indicate urn:x-nmos:format:mux for the format . Source resources can be associated with many Flows at the same time. The Source is therefore unaffected by the use of MPEG TS or the encapsulated content. Flows The Flow resource MUST indicate video/MP2T in the media_type attribute, and urn:x-nmos:format:mux for the format , as defined in the IS-04 Flow Mux Schema An example Flow resource is provided in the Examples . MPEG TS IS-04 Senders and Receivers MPEG TS capable Senders and Receivers MUST use IS-05 permitted transports. Senders For Nodes implementing IS-04 v1.3 or higher, the following additional attributes defined in the Sender Attributes register of the NMOS Parameter Registers are used for MPEG TS: Bit Rate This attribute MUST be present as defined in equipment where the bit rate is known. For transports requiring an SDP, the sender MUST publish this at the manifest_href endpoint and MUST comply with the IS-05 usage guidelines for the specific transport and RFC 4566 An example Sender resource is provided in the Examples . Receivers Nodes capable of receiving MPEG TS streams MUST have a Receiver resource in the IS-04 Node API, which lists video/MP2T in the media_types array within the caps object, and MUST signal urn:x-nmos:format:mux as format , as defined in the IS-04 Receiver Mux Schema . If the Receiver has limitations on or preferences regarding the MPEG TS streams that it supports, the Receiver resource MUST indicate constraints in accordance with the BCP-004-01 Receiver Capabilities specification. The Receiver SHOULD express its constraints as precisely as possible, to allow a Controller to determine with a high level of confidence the Receiver's compatibility with the available streams. It is not always practical for the constraints to indicate every type of stream that a Receiver can or cannot consume successfully; however, they SHOULD describe as many of its commonly used operating points as practical and any preferences among them. The constraint_sets parameter within the caps object can be used to describe combinations of parameters which the Receiver can support, using the parameter constraints defined in the Capabilities register of the NMOS Parameter Registers. The following parameter constraints MAY be used to express limitations on MPEG TS streams: - Transport Bit Rate An example Receiver resource is provided in the Examples . MPEG TS IS-05 Senders and Receivers All transport types capable of carrying MPEG TS streams MAY be used. Connection Management follows IS-05 for the indicated transport type. Senders and Receivers MUST be compliant with the IS-05 requirements for any permitted IS-05 transport. For transports requiring an SDP, such as RTP, the sender MUST publish this at the /transportfile endpoint and MUST comply with the IS-05 usage guidelines for the specific transport and RFC 4566 . An example SDP is provided in the Examples . Controllers Controllers MUST use IS-04 to discover MPEG TS Senders and Receivers and IS-05 to manage connections between them. Controllers MUST support the BCP-004-01 Receiver Capabilities mechanism and all the parameter constraints listed in this specification in order to evaluate the stream compatibility between MPEG TS Senders and Receivers.",
+      "repository": "AMWA-TV/bcp-006-04"
+    },
+    {
+      "title": "flow_resource.json",
+      "url": "https://specs.amwa.tv/new/bcp-006-04/latest/examples/flow_resource/",
+      "text": "flow_resource.json flow_resource.json flow_resource.json - AMWA BCP-006-04 NMOS Support for MPEG Transport Streams Skip to content flow_resource.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/bcp-006-04"
+    },
+    {
+      "title": "Examples",
+      "url": "https://specs.amwa.tv/new/bcp-006-04/latest/examples/",
+      "text": "Examples Examples Examples - AMWA BCP-006-04 NMOS Support for MPEG Transport Streams Skip to content Examples flow_resource.json receiver_resource.json sender_resource.json source_resource.json",
+      "repository": "AMWA-TV/bcp-006-04"
+    },
+    {
+      "title": "receiver_resource.json",
+      "url": "https://specs.amwa.tv/new/bcp-006-04/latest/examples/receiver_resource/",
+      "text": "receiver_resource.json receiver_resource.json receiver_resource.json - AMWA BCP-006-04 NMOS Support for MPEG Transport Streams Skip to content receiver_resource.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/bcp-006-04"
+    },
+    {
+      "title": "sender_resource.json",
+      "url": "https://specs.amwa.tv/new/bcp-006-04/latest/examples/sender_resource/",
+      "text": "sender_resource.json sender_resource.json sender_resource.json - AMWA BCP-006-04 NMOS Support for MPEG Transport Streams Skip to content sender_resource.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/bcp-006-04"
+    },
+    {
+      "title": "source_resource.json",
+      "url": "https://specs.amwa.tv/new/bcp-006-04/latest/examples/source_resource/",
+      "text": "source_resource.json source_resource.json source_resource.json - AMWA BCP-006-04 NMOS Support for MPEG Transport Streams Skip to content source_resource.json View: Folding Raw Expand all Collapse all",
+      "repository": "AMWA-TV/bcp-006-04"
+    },
+    {
+      "title": "README",
+      "url": "https://specs.amwa.tv/new/bcp-006-04/latest/images/",
+      "text": "README README README - AMWA BCP-006-04 NMOS Support for MPEG Transport Streams Skip to content README This directory is for images used in documentation",
+      "repository": "AMWA-TV/bcp-006-04"
+    },
+    {
+      "title": "AMWA BCP-006-04 NMOS Support for MPEG Transport Streams",
+      "url": "https://specs.amwa.tv/new/bcp-006-04/latest/",
+      "text": "AMWA BCP-006-04 NMOS Support for MPEG Transport Streams AMWA BCP-006-04 NMOS Support for MPEG Transport Streams What does it do? Why does it matter? How does it work? Getting started AMWA BCP-006-04 NMOS Support for MPEG Transport Streams - AMWA BCP-006-04 NMOS Support for MPEG Transport Streams Skip to content AMWA BCP-006-04 NMOS Support for MPEG Transport Streams This repository holds the source for this Specification, part of the family of Networked Media Open Specifications from the Advanced Media Workflow Association What does it do? Enables Registration, Discovery, and Connection Management of MPEG TS Endpoints using the AMWA IS-04 and IS-05 NMOS Specifications. Why does it matter? It creates a set of requirements for interoperable implementations offering the Discovery and Connection Management of MPEG TS endpoints. How does it work? It specifies what resources and attributes MUST be provided when using NMOS with MPEG TS streams. MPEG TS streams are considered as mux format, and this specification does not consider streams within the multiplex. It provides examples of how to use IS-04 and IS-05 in the context of MPEG TS streams with RTP transport, such as VSF TR-01 and VSF TR-07 Getting started There is more information about the NMOS Specifications and their GitHub repos at https://specs.amwa.tv/nmos .",
+      "repository": "AMWA-TV/bcp-006-04"
+    }
+  ]
+}

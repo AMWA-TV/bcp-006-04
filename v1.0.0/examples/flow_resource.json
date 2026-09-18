@@ -1,0 +1,12 @@
+{
+ "description": "MPEG-TS flow",
+ "device_id": "c6a1ece0-214e-421b-8f0c-5a0f1f13b846",
+ "format": "urn:x-nmos:format:mux",
+ "id": "aef84014-09db-4d0e-96bf-0ffc3374296b",
+ "label": "MPEG-TS flow",
+ "media_type": "video/MP2T",
+ "parents": [],
+ "source_id": "48d71b97-6506-4d40-9188-5bc0ca4edbc9",
+ "tags": {},
+ "version": "1745415346:0"
+}
